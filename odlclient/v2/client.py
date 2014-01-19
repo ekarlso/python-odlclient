@@ -5,6 +5,7 @@ from odlclient.v2.bridge_domain import BridgeDomain
 from odlclient.v2.connection_manager import ConnectionManager
 from odlclient.v2.subnet import SubnetManager
 from odlclient.v2.staticroute import StaticRouteManager
+from odlclient.v2.node import NodeManager
 
 
 class HTTPClient(client.HTTPClient):
@@ -59,5 +60,6 @@ class Client(client.BaseClient):
         super(Client, self).__init__(*args, **kw)
         self.bridge_domain = BridgeDomain(self)
         self.connection_manager = ConnectionManager(self)
+        self.nodes = NodeManager(self)
         self.subnets = SubnetManager(self)
         self.staticroutes = StaticRouteManager(self)
