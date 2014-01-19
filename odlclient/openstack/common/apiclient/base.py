@@ -119,7 +119,8 @@ class BaseManager(HookableMixin):
         cls = obj_class or self.resource_class
         return cls(self, data, loaded=True)
 
-    def _list(self, url, response_key=None, obj_class=None, json=None):
+    def _list(self, url, response_key=None, obj_class=None, json=None,
+              return_raw=False):
         """List the collection.
 
         :param url: a partial URL, e.g., '/servers'
@@ -137,12 +138,15 @@ class BaseManager(HookableMixin):
         else:
             body = self.client.get(url).json()
 
-        if obj_class is None:
-            obj_class = self.resource_class
-
         data = self._extract_data(body, response_key=response_key)
 
-        return [obj_class(self, res, loaded=True) for res in data if res]
+        if return_raw:
+            return data
+        else:
+            items = []
+            for i in data:
+                items.append(self._make_obj(i, obj_class=obj_class))
+            return items
 
     def _get(self, url, response_key=None, return_raw=False, obj_class=None):
         """Get an object from collection.
