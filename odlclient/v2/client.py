@@ -1,6 +1,7 @@
 import requests
 
 from odlclient.openstack.common.apiclient import client
+from odlclient.v2.bridge_domain import BridgeDomain
 from odlclient.v2.connection_manager import ConnectionManager
 from odlclient.v2.subnet import SubnetManager
 from odlclient.v2.staticroute import StaticRouteManager
@@ -56,6 +57,7 @@ class HTTPClient(client.HTTPClient):
 class Client(client.BaseClient):
     def __init__(self, *args, **kw):
         super(Client, self).__init__(*args, **kw)
+        self.bridge_domain = BridgeDomain(self)
         self.connection_manager = ConnectionManager(self)
         self.subnets = SubnetManager(self)
         self.staticroutes = StaticRouteManager(self)
