@@ -8,4 +8,10 @@ http = odlclient.HTTPClient(
 
 client = odlclient.Client(http)
 
-client.nodes.list()
+nodes = client.nodes.list()
+
+node = nodes[0]
+connectors = client.nodes.list_connectors(node.type, node.id)
+
+for connector in connectors:
+    print connector
