@@ -51,8 +51,11 @@ class HTTPClient(client.HTTPClient):
             self.http.auth = (self.username, self.password)
 
     def client_request(self, client, method, url, **kwargs):
+        try:
             return self.request(
                 method, self.concat_url(self.endpoint, url), **kwargs)
+        except Exception:
+            raise
 
 
 class Client(client.BaseClient):

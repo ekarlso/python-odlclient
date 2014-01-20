@@ -3,9 +3,7 @@ from odlclient.v2.base import Manager
 
 
 class Connection(base.Resource):
-    @property
-    def id(self):
-        return self.name
+    pass
 
 
 class ConnectionManager(Manager):
@@ -17,7 +15,7 @@ class ConnectionManager(Manager):
         List Connections
         """
         url = self._url('nodes')
-        return self._get(url)
+        return self._list(url, response_key='node')
 
     def create(self, node_id, ip_address, port, node_type=None):
         """
