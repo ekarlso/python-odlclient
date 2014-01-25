@@ -32,7 +32,7 @@ class NodeConnector(base.Resource):
 
 
 class NodeManager(Manager):
-    app = 'switchmanager'
+    base = 'controller/nb/v2/switchmanager'
     has_container = True
     resource_class = Node
 

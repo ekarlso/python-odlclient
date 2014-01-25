@@ -24,7 +24,7 @@ class BridgeDomain(base.Resource):
 
 
 class BridgeDomain(Manager):
-    app = 'bridgedomain'
+    base = 'controller/nb/v2/bridgedomain'
 
     def list(self):
         """

@@ -22,7 +22,7 @@ class Connection(base.Resource):
 
 
 class ConnectionManager(Manager):
-    app = 'connectionmanager'
+    base = 'controller/nb/v2/connectionmanager'
     resource_class = Connection
 
     def list(self):

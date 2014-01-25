@@ -25,7 +25,7 @@ class Subnet(base.Resource):
 
 
 class SubnetManager(Manager):
-    app = 'subnetservice'
+    base = 'controller/nb/v2/subnetservice'
     has_container = True
     resource_class = Subnet
 

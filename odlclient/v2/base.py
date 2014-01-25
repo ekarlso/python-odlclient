@@ -22,13 +22,13 @@ LOG = logging.getLogger(__name__)
 
 
 class Manager(ManagerWithFind):
-    app = None
+    base = None
     has_container = False
 
     def _url(self, *args, **kw):
         parts = []
-        if self.app is not None:
-            parts.append(self.app)
+        if self.base is not None:
+            parts.append(self.base)
 
         if self.has_container:
             container = kw.pop('container', None) or 'default'

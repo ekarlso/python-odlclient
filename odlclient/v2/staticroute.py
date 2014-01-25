@@ -24,7 +24,7 @@ class StaticRoute(base.Resource):
 
 
 class StaticRouteManager(Manager):
-    app = 'staticroute'
+    base = 'controller/nb/v2/staticroute'
     has_container = True
     resource_class = StaticRoute
 
