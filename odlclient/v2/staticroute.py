@@ -48,7 +48,7 @@ class StaticRouteManager(Manager):
         url = self._url('route', name, container=container)
         return self._get(url)
 
-    def create(self, name, prefix, nexthop, container=None):
+    def create(self, name, prefix, next_hop, container=None):
         """
         Create a StaticRoute.
 
@@ -61,7 +61,7 @@ class StaticRouteManager(Manager):
         json = {
             "name": name,
             "prefix": prefix,
-            "nextHop": nexthop
+            "nextHop": next_hop
         }
 
         self._put(url, json=json)
