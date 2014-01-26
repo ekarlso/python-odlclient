@@ -1,21 +1,21 @@
 import logging
+import pprint
 
 from odlclient.v2 import client as odlclient
 
 logging.basicConfig(level='DEBUG')
 
 http = odlclient.HTTPClient(
-    'http://home.dtucker.co.uk:8080',
+    'http://localhost:8080',
     username='admin',
     password='admin')
 
 client = odlclient.Client(http)
 
-node_type = 'OVS'
-node_id = '10.10.0.24:54155'
-table_name = 'open_vswitch'
-row_uuid = '00bdb4f9-0d50-4793-bca3-f13c2e9d0eb5'
-
-row = client.ovsdb.get(node_type, node_id, table_name, row_uuid)
-
-print row
+connections = client.connection_manager.list()
+for n in connections:
+    if n.type == 'OVS':
+        print "Getting OVSDB bridges"
+        rows = client.ovsdb.list(n.type, n.id, 'open_vswitch')
+        for r in rows.values():
+            pprint.pprint(r)
