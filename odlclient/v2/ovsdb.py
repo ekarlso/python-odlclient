@@ -15,33 +15,31 @@
 # under the License.
 from odlclient.v2.base import Manager
 
+
 class OvsdbManager(Manager):
     base = 'ovsdb/nb/v2'
 
     def list(self, node_type, node_id, table_name):
-        url = self._url('node', node_type, node_id ,
+        url = self._url('node', node_type, node_id,
                         'tables', table_name, 'rows')
-        return self._list(url)
+        return self._list(url, return_raw=True)
 
     def create(self, node_type, node_id, table_name, data):
-        url = self._url('node', node_type, node_id ,
+        url = self._url('node', node_type, node_id,
                         'tables', table_name, 'rows')
         return self._post(url, data, return_raw=True)
 
     def get(self, node_type, node_id, table_name, row_uuid):
-        url = self._url('node', node_type, node_id ,
+        url = self._url('node', node_type, node_id,
                         'tables', table_name, 'rows', row_uuid)
         return self._get(url, return_raw=True)
 
     def delete(self, node_type, node_id, table_name, row_uuid):
-        url = self._url('node', node_type, node_id ,
+        url = self._url('node', node_type, node_id,
                         'tables', table_name, 'rows', row_uuid)
         return self._delete(url)
 
     def update(self, node_type, node_id, table_name, row_uuid):
-        url = self._url('node', node_type, node_id ,
+        url = self._url('node', node_type, node_id,
                         'tables', table_name, 'rows', row_uuid)
         return self._put(url, return_raw=True)
-
-
-
