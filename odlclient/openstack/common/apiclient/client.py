@@ -155,6 +155,7 @@ class HTTPClient(object):
              that will be encoded as JSON and used as `data` argument
         """
         kwargs.setdefault("headers", kwargs.get("headers", {}))
+        kwargs['headers'].setdefault('Accept', 'application/json')
         kwargs["headers"]["User-Agent"] = self.user_agent
         if self.original_ip:
             kwargs["headers"]["Forwarded"] = "for=%s;by=%s" % (
