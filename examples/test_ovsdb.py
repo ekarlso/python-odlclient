@@ -5,7 +5,7 @@ from odlclient.v2 import client as odlclient
 logging.basicConfig(level='DEBUG')
 
 http = odlclient.HTTPClient(
-    'http://localhost:8080',
+    'http://home.dtucker.co.uk:8080',
     username='admin',
     password='admin')
 

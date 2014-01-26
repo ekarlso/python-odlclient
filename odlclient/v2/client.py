@@ -75,7 +75,7 @@ class HTTPClient(client.HTTPClient):
             return self.request(
                 method, self.concat_url(self.endpoint, url), **kwargs)
         except Exception as e:
-            LOG.error("Error from server below:\n%s", e.message)
+            LOG.error("Error from server below:\n%s", e.details)
             raise
 
 
