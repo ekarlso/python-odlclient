@@ -13,6 +13,7 @@
 # WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
 # License for the specific language governing permissions and limitations
 # under the License.
+import logging
 import requests
 
 from odlclient.openstack.common.apiclient import client
@@ -23,6 +24,8 @@ from odlclient.v2.ovsdb import OvsdbManager
 from odlclient.v2.subnet import SubnetManager
 from odlclient.v2.staticroute import StaticRouteManager
 
+
+LOG = logging.getLogger(__name__)
 
 
 class HTTPClient(client.HTTPClient):
@@ -71,7 +74,8 @@ class HTTPClient(client.HTTPClient):
         try:
             return self.request(
                 method, self.concat_url(self.endpoint, url), **kwargs)
-        except Exception:
+        except Exception as e:
+            LOG.error("Error from server below:\n%s", e.message)
             raise
 
 
