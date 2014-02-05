@@ -13,6 +13,9 @@
 # WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
 # License for the specific language governing permissions and limitations
 # under the License.
+from datetime import datetime
+import time
+
 from odlclient.openstack.common.apiclient import base
 from odlclient.v2.base import Manager
 
@@ -25,6 +28,16 @@ class Node(base.Resource):
     @property
     def type(self):
         return self.node['type']
+
+    @property
+    def description(self):
+        data = self._info['properties']['description']['value']
+        return None if data == 'None' else data
+
+    @property
+    def connected_since(self):
+        data = self._info['properties']['timeStamp']['value']
+        return datetime.fromtimestamp(time.mktime(time.gmtime(data / 1000)))
 
 
 class NodeConnector(base.Resource):
