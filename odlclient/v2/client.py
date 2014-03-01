@@ -24,6 +24,7 @@ from odlclient.v2.ovsdb import OvsdbManager
 from odlclient.v2.subnet import SubnetManager
 from odlclient.v2.staticroute import StaticRouteManager
 from odlclient.v2.neutron import NeutronManagers
+from odlclient.v2.flavor_app.managers import FlavorAppManagers
 
 
 LOG = logging.getLogger(__name__)
@@ -91,3 +92,4 @@ class Client(client.BaseClient):
         self.subnets = SubnetManager(self)
         self.staticroutes = StaticRouteManager(self)
         self.neutron = NeutronManagers(self)
+        self.flavor_app = FlavorAppManagers(self)
