@@ -17,9 +17,7 @@ from odlclient.openstack.common.apiclient import base
 from odlclient.v2.base import Manager
 
 class Flavor(base.Resource):
-    @property
-    def id(self):
-        return self.id
+    pass
 
 class FlavorManager(Manager):
     base = 'controller/nb/v2/policy/default'
@@ -61,14 +59,14 @@ class FlavorManager(Manager):
             "fwd_class": fwd_class
         }
 
-        self._post(url, json=json, return_raw=True)
+        return self._post(url, json=json, return_raw=True)
 
     def delete(self, id, container=None):
         """
-        Delete a StaticRoute.
+        Delete a Flavor
 
         :param id: Flavor ID to delete
         :param container: Container if any.
         """
-        url = self._url('flavor', id, container=container)
+        url = self._url('flavor', str(id), container=container)
         self._delete(url)

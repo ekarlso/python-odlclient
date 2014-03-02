@@ -17,9 +17,7 @@ from odlclient.openstack.common.apiclient import base
 from odlclient.v2.base import Manager
 
 class Policy(base.Resource):
-    @property
-    def id(self):
-        return self.id
+    pass
 
 class PolicyManager(Manager):
     base = 'ovsdb/nb/v2/neutron'
@@ -59,7 +57,7 @@ class PolicyManager(Manager):
             "flavor": flavor
         }
 
-        self._post(url, json=json, return_raw=True)
+        return self._post(url, json=json, return_raw=True)
 
     def delete(self, id, container=None):
         """
@@ -68,7 +66,7 @@ class PolicyManager(Manager):
         :param id: Policy element ID to delete
         :param container: Container if any.
         """
-        url = self._url('tenantFlavor', id, container=container)
+        url = self._url('tenantFlavor', str(id), container=container)
         self._delete(url)
 
 
