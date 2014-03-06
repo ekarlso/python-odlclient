@@ -9,3 +9,7 @@ install:
   - pip install --upgrade 'tox>=1.6,<1.7'
 script:
   - tox
+
+notifications:
+  irc:
+    - "chat.freenode.net#opendaylight-dlux"
