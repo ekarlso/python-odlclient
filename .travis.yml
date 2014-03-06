@@ -1,12 +1,8 @@
 language: python
 env:
-  - TOX_ENV=py33-1.6.X
-  - TOX_ENV=py33-1.5.X
-  - TOX_ENV=py27-1.6.X
-  - TOX_ENV=py27-1.5.X
-  - TOX_ENV=py27-1.4.X
-  - TOX_ENV=py26-1.5.X
-  - TOX_ENV=py26-1.4.X
+  - TOX_ENV=py33
+  - TOX_ENV=py27
+  - TOX_ENV=py26
   - TOX_ENV=docs
   - TOX_ENV=flake8
 install: "pip install tox"
