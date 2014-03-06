@@ -1,11 +1,11 @@
 language: python
 env:
-    - TOX_ENV=py33
-    - TOX_ENV=py27
-    - TOX_ENV=py26
-    - TOX_ENV=docs
-    - TOX_ENV=flake8
+  - TOXENV=py33
+  - TOXENV=py26
+  - TOXENV=py27
+  - TOXENV=pep8
 
-install: "pip install tox"
+install:
+  - pip install tox
 script:
-    - tox -e $TOX_ENV
+  - tox
