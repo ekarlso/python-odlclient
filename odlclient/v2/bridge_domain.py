@@ -23,7 +23,7 @@ class BridgeDomain(base.Resource):
         return self.name
 
 
-class BridgeDomain(Manager):
+class BridgeDomainManager(Manager):
     base = 'controller/nb/v2/bridgedomain'
 
     def list(self):

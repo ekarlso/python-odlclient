@@ -17,13 +17,13 @@ import logging
 import requests
 
 from odlclient.openstack.common.apiclient import client
-from odlclient.v2.bridge_domain import BridgeDomain
+from odlclient.v2.bridge_domain import BridgeDomainManager
 from odlclient.v2.connection_manager import ConnectionManager
+from odlclient.v2.neutron import NeutronManagers
 from odlclient.v2.node import NodeManager
 from odlclient.v2.ovsdb import OvsdbManager
-from odlclient.v2.subnet import SubnetManager
 from odlclient.v2.staticroute import StaticRouteManager
-from odlclient.v2.neutron import NeutronManagers
+from odlclient.v2.subnet import SubnetManager
 
 
 LOG = logging.getLogger(__name__)
@@ -84,7 +84,7 @@ class HTTPClient(client.HTTPClient):
 class Client(client.BaseClient):
     def __init__(self, *args, **kw):
         super(Client, self).__init__(*args, **kw)
-        self.bridge_domain = BridgeDomain(self)
+        self.bridge_domain = BridgeDomainManager(self)
         self.connection_manager = ConnectionManager(self)
         self.nodes = NodeManager(self)
         self.ovsdb = OvsdbManager(self)

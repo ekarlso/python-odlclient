@@ -21,11 +21,14 @@ from odlclient.v2.base import Manager
 class NeutronNetwork(base.Resource):
     pass
 
+
 class NeutronPort(base.Resource):
     pass
 
+
 class NeutronSubnet(base.Resource):
     pass
+
 
 class NeutronBaseManager(Manager):
     """
@@ -79,20 +82,24 @@ class NeutronBaseManager(Manager):
         url = self._url(self.resource, uuid)
         self._delete(url)
 
+
 class NeutronNetworkManager(NeutronBaseManager):
     resource = 'networks'
     singular = 'network'
     resource_class = NeutronNetwork
+
 
 class NeutronSubnetManager(NeutronBaseManager):
     resource = 'subnets'
     singular = 'subnet'
     resource_class = NeutronSubnet
 
+
 class NeutronPortManager(NeutronBaseManager):
     resource = 'ports'
     singular = 'port'
     resource_class = NeutronPort
+
 
 class NeutronManagers(object):
     def __init__(self, client):
