@@ -6,6 +6,6 @@ env:
   - TOXENV=pep8
 
 install:
-  - "pip install tox>=1.6,<1.7"
+  - pip install --upgrade 'tox>=1.6,<1.7'
 script:
   - tox
